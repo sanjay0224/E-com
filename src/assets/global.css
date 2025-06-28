@@ -1,0 +1,28 @@
+/* src/assets/global.css */
+body {
+    background-color: #22374d; /* dark blue background */
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  button, .btn {
+    background-color: #f8b400;
+    color: #000;
+    border: none;
+  }
+  
+  button:hover, .btn:hover {
+    background-color: #ffd966;
+    color: #000;
+  }
+  
+  a {
+    color: #f8b400;
+  }
+  
+  a:hover {
+    color: #ffd966;
+  }
+  

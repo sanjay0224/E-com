@@ -7,6 +7,8 @@ import ProductPage from '@/components/ProductPage.vue';
 import CartPage from '@/components/CartPage.vue';
 import PaymentPage from '@/components/PaymentPage.vue';
 
+
+
 const routes = [
   { path: '/', redirect: '/signup' },
   { path: '/signup', component: SignupPage },

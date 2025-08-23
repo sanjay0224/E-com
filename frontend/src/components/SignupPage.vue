@@ -35,18 +35,23 @@ export default {
       password: ''
     };
   },
-  methods: {
+   methods: {
     async handleSignup() {
       try {
-        const response = await axios.post('http://localhost:5000/api/signup', {
+        // Call backend signup route
+        const response = await axios.post("http://localhost:5000/api/auth/signup", {
           name: this.name,
           email: this.email,
-          password: this.password 
+          password: this.password
         });
 
+        // Show success message
         alert(response.data.message);
+
+        // Redirect to login page
         this.$router.push('/login');
       } catch (err) {
+        // Show error message
         alert(err.response?.data?.message || 'Signup failed');
       }
     }

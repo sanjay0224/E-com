@@ -1,44 +1,45 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark" :style="{ backgroundColor: '#22374d' }">
-  <div class="container-fluid">
-    <router-link class="navbar-brand fw-bold text-white" to="/">E-Shop</router-link>
+      <div class="container-fluid">
+        <router-link class="navbar-brand fw-bold text-white" to="/">E-Shop</router-link>
 
-    <div class="collapse navbar-collapse justify-content-between">
-      <!-- Left Side Nav Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/home">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/products">Products</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/cart">Cart</router-link>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse justify-content-between">
+          <!-- Left Side Nav Links -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/home">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/products">Products</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/cart">Cart</router-link>
+            </li>
+          </ul>
 
-      <!-- Right Side Auth Links -->
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/signup">Signup</router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
-        </li>
+          <!-- Right Side Auth Links -->
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/login">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/signup">Signup</router-link>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-    <transition name="fade" mode="out-in">
-      <router-view />
-    </transition>
+    <!-- Fixed transition with router-view slot -->
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 

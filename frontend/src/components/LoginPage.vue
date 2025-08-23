@@ -31,24 +31,28 @@ export default {
     };
   },
   methods: {
-    async handleLogin() {
-      try {
-        const response = await axios.post('http://localhost:5000/api/login', {
-          email: this.email,
-          password: this.password
-        });
+   async handleLogin() {
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", {
+  email: this.email,
+  password: this.password
+});
 
-        alert(response.data.message);
+    alert(response.data.message);
 
-        // Removed page locking and redirection logic
-        // localStorage.setItem('isLoggedIn', 'true');
-        // localStorage.setItem('userName', response.data.name);
-        // this.$router.push('/home');
+    // ✅ Store login status and token
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("userName", response.data.user.name);
 
-      } catch (err) {
-        alert(err.response?.data?.message || 'Login failed');
-      }
-    }
+    // ✅ Redirect to home
+    this.$router.push("/home");
+  } catch (err) {
+    alert(err.response?.data?.message || "Login failed");
+  }
+}
+
+
   }
 };
 </script>

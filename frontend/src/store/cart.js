@@ -4,20 +4,29 @@ import { reactive } from 'vue';
 export const cart = reactive({
   items: [],
 
+  // Add item to cart
   addItem(product) {
-    const existingItem = this.items.find(item => item.id === product.id);
-    if (existingItem) {
-      existingItem.quantity += 1;
+    // Use only id
+    const existing = this.items.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity++;
     } else {
       this.items.push({ ...product, quantity: 1 });
     }
   },
 
-  removeItem(productId) {
-    this.items = this.items.filter(item => item.id !== productId);
+  // Remove item from cart
+  removeItem(id) {
+    this.items = this.items.filter(item => item.id !== id);
   },
 
+  // Clear the entire cart
   clearCart() {
     this.items = [];
+  },
+
+  // Load cart (in-memory, no backend)
+  loadCart() {
+    return this.items;
   }
 });

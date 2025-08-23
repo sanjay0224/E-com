@@ -2,6 +2,7 @@
   <div class="home text-center text-light py-5">
     <h1 class="fade-in-drop"> Welcome to E-Shop !!</h1>
     <p class="fade-in-rise">Your favorite place to buy cool gadgets.</p>
+
     <div class="mt-4">
       <router-link to="/products">
         <button class="btn btn-primary m-2">Browse Products</button>
@@ -9,13 +10,31 @@
       <router-link to="/cart">
         <button class="btn btn-success m-2">View Cart</button>
       </router-link>
+      <!-- ✅ Logout Button -->
+      <button class="btn btn-danger m-2" @click="handleLogout">Logout</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  mounted() {
+    // Prevent accessing without login
+    if (!localStorage.getItem('isLoggedIn')) {
+      this.$router.push('/');
+    }
+  },
+  methods: {
+    handleLogout() {
+      // Clear login data
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userName');
+      
+      // Redirect to login
+      this.$router.push('/');
+    }
+  }
 };
 </script>
 

@@ -1,4 +1,4 @@
-// backend/models/Cart.js
+//writing schemas for user and products
 const mongoose = require("mongoose");
 
 const CartSchema = new mongoose.Schema({

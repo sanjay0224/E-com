@@ -1,11 +1,10 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const express = require("express"); //for connections
+const bcrypt = require("bcrypt");  // for salting passwords
+const jwt = require("jsonwebtoken"); // creating tokens
 const User = require("../models/user");
 
 const router = express.Router();
 
-// POST /api/signup
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -26,7 +25,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// POST /api/login
+
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;

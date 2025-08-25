@@ -6,7 +6,7 @@ import HomePage from '@/components/HomePage.vue';
 import ProductPage from '@/components/ProductPage.vue';
 import CartPage from '@/components/CartPage.vue';
 import PaymentPage from '@/components/PaymentPage.vue';
-
+import about from '@/components/about.vue';
 
 
 const routes = [
@@ -17,7 +17,8 @@ const routes = [
   { path: '/products', component: ProductPage },
   { path: '/cart', component: CartPage },
   { path: '/payment', component: PaymentPage },
-  { path: '/:pathMatch(.*)*', redirect: '/signup' } // catch-all
+  { path: '/:pathMatch(.*)*', redirect: '/signup' } ,
+  {path: '/about', component: about}// catch-all
 ];
 
 const router = createRouter({

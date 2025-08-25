@@ -1,9 +1,9 @@
 const express = require("express");
-const Product = require("../models/Product");
+const Product = require("../models/product");
 
 const router = express.Router();
 
-// POST /api/products
+
 router.post("/", async (req, res) => {
   try {
     const { name, price, description } = req.body;
@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET /api/products
+
 router.get("/", async (_req, res) => {
   const products = await Product.find().sort({ createdAt: -1 });
   return res.json(products);

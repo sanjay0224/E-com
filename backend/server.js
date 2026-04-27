@@ -25,8 +25,8 @@ const corsOptions = {
       "http://localhost:8081",
     ].filter(Boolean);
     
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowed.some(url => origin.startsWith(url))) {
+    // Allow requests from any vercel.app subdomain or localhost
+    if (!origin || origin.endsWith(".vercel.app") || allowed.some(url => origin.startsWith(url))) {
       callback(null, true);
     } else {
       console.error(`🚫 CORS Blocked for origin: ${origin}`);

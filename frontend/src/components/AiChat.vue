@@ -107,7 +107,8 @@ export default {
   },
   async mounted() {
     try {
-      const resp = await fetch('http://localhost:5000/api/products');
+      const apiBase = process.env.VUE_APP_API_BASE_URL || "";
+      const resp = await fetch(`${apiBase}/api/products`);
       if (resp.ok) {
         const data = await resp.json();
         if (data && data.length) this.products = data;

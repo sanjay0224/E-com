@@ -16,12 +16,23 @@ const app = express();
 
 // ✅ CORS configuration
 const corsOptions = {
-  origin: [
-    process.env.FRONTEND_URL,
-    "https://e-com-ecru-seven.vercel.app",
-    "http://localhost:8080",
-    "http://localhost:8081",
-  ].filter(Boolean),
+  origin: function (origin, callback) {
+    const allowed = [
+      process.env.FRONTEND_URL,
+      "https://shopvibe-omega.vercel.app",
+      "https://e-com-ecru-seven.vercel.app",
+      "http://localhost:8080",
+      "http://localhost:8081",
+    ].filter(Boolean);
+    
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowed.some(url => origin.startsWith(url))) {
+      callback(null, true);
+    } else {
+      console.error(`🚫 CORS Blocked for origin: ${origin}`);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 app.use(cors(corsOptions));

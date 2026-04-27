@@ -1,8 +1,9 @@
 import axios from "axios";
 
-// In production, fallback to Render URL. In development, use an empty string to leverage vue.config.js proxy.
-const API_BASE_URL = process.env.VUE_APP_API_BASE_URL || (process.env.NODE_ENV === "production" ? "https://e-com-1-tcfl.onrender.com" : "");
+// Use the Environment Variable from Vercel/Local. 
+// DO NOT hardcode URLs here to avoid deployment mismatch.
+const API_BASE_URL = process.env.VUE_APP_API_BASE_URL || "";
 
 export default axios.create({
-  baseURL: `${API_BASE_URL}/api`,
+  baseURL: API_BASE_URL ? `${API_BASE_URL}/api` : "/api",
 });

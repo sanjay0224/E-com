@@ -5,66 +5,71 @@ const Product = require('./models/Product');
 dotenv.config();
 
 const products = [
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67891"),
-    name: "Smartphone", 
-    category: "Electronics", 
-    price: 19999, 
-    discount: 10, 
-    rating: 4, 
-    description: "Sleek smartphone with high-resolution display and great camera", 
-    image: "/images/mob.jpg" 
-  },
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67892"),
-    name: "Laptop", 
-    category: "Electronics", 
-    price: 49999, 
-    discount: 15, 
-    rating: 5, 
-    description: "High-performance laptop for gaming and productivity", 
-    image: "/images/lap.jpg" 
-  },
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67893"),
-    name: "Headphones", 
-    category: "Electronics", 
-    price: 2999, 
-    discount: 0,
-    rating: 4, 
-    description: "Wireless headphones with noise cancellation", 
-    image: "/images/headphones.jpg" 
-  },
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67894"),
-    name: "Smart TV", 
-    category: "Electronics", 
-    price: 27999, 
-    discount: 20, 
-    rating: 3, 
-    description: '42" 4K UHD Smart TV with streaming apps built-in', 
-    image: "/images/tv.jpg" 
-  },
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67895"),
-    name: "Air Conditioner", 
-    category: "Electronics", 
-    price: 35999, 
-    discount: 0,
-    rating: 5, 
-    description: "1.5 Ton Split AC with fast cooling technology", 
-    image: "/images/ac.jpg" 
-  },
-  { 
-    _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67896"),
-    name: "Lipstick", 
-    category: "Beauty", 
-    price: 599, 
-    discount: 5, 
-    rating: 4, 
-    description: "Long-lasting matte lipstick in various shades", 
-    image: "/images/lipsticks.jpg" 
-  },
+  // ── SMARTPHONES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67891"), name:"Samsung Galaxy S24 Ultra", category:"Smartphones", price:134999, discount:10, rating:5, reviews:4821, description:"6.8\" QHD+ Dynamic AMOLED 2X, 200MP quad-camera, 100x Space Zoom, Snapdragon 8 Gen 3, S Pen included, 5000mAh, 45W fast charging. Titanium frame.", image:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67892"), name:"Apple iPhone 15 Pro", category:"Smartphones", price:134900, discount:5, rating:5, reviews:6230, description:"6.1\" Super Retina XDR, A17 Pro chip, 48MP triple-camera, Titanium design, Action Button, USB-C, ProMotion 120Hz. Camera Control button.", image:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67893"), name:"OnePlus 12 5G", category:"Smartphones", price:64999, discount:8, rating:4, reviews:2145, description:"6.82\" 2K LTPO AMOLED, Snapdragon 8 Gen 3, Hasselblad 50MP triple camera, 5400mAh, 100W SUPERVOOC + 50W AirVOOC wireless charging.", image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67894"), name:"Redmi Note 13 Pro+ 5G", category:"Smartphones", price:29999, discount:12, rating:4, reviews:3910, description:"6.67\" Curved AMOLED 1.5K, 200MP OIS camera, Dimensity 7200 Ultra, 5000mAh, 120W HyperCharge. IP68 rated. Best camera under ₹30K.", image:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67895"), name:"Google Pixel 8a", category:"Smartphones", price:52999, discount:0, rating:4, reviews:987, description:"6.1\" Actua OLED, Google Tensor G3, 64MP+13MP dual camera with AI magic eraser, 7 years OS updates, 4492mAh, IP67. Pure Android.", image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80", stock:true },
+  // ── LAPTOPS ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67896"), name:"Apple MacBook Air M3", category:"Laptops", price:114900, discount:8, rating:5, reviews:3201, description:"13.6\" Liquid Retina, Apple M3 chip, 8GB RAM, 256GB SSD, 18-hour battery, 1080p FaceTime camera, MagSafe 3, two Thunderbolt 3 ports. Fanless.", image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67897"), name:"Dell XPS 15 (2024)", category:"Laptops", price:154990, discount:10, rating:4, reviews:1456, description:"15.6\" OLED 3.5K touch, Intel Core i7-13700H, 16GB DDR5, 512GB NVMe, NVIDIA RTX 4060 8GB, 86WHr battery. Premium CNC aluminium build.", image:"https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67898"), name:"ASUS ROG Strix G16", category:"Laptops", price:134990, discount:15, rating:5, reviews:2087, description:"16\" QHD 240Hz IPS, Intel Core i9-14900HX, 32GB DDR5, 1TB SSD, NVIDIA RTX 4070 8GB, ROG Intelligent Cooling, per-key RGB keyboard.", image:"https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f67899"), name:"HP Pavilion 15 AMD Ryzen 7", category:"Laptops", price:67990, discount:18, rating:4, reviews:1734, description:"15.6\" FHD IPS anti-glare, AMD Ryzen 7 7730U, 16GB DDR4, 512GB SSD, Radeon Graphics, B&O audio, Windows 11. Great for students.", image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80", stock:true },
+  // ── AUDIO ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789a"), name:"Sony WH-1000XM5", category:"Audio", price:29990, discount:20, rating:5, reviews:5612, description:"Industry-leading noise cancelling, 8 mics, 30hr battery, 3-min quick charge = 3hr playback, multipoint connection, speak-to-chat. Premium over-ear.", image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789b"), name:"Apple AirPods Pro (2nd Gen)", category:"Audio", price:24900, discount:5, rating:5, reviews:8921, description:"ANC + Transparency mode, Adaptive Audio, Personalized Spatial Audio, H2 chip, up to 6hr + 30hr with MagSafe case.", image:"https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789c"), name:"boAt Airdopes 141 TWS", category:"Audio", price:1299, discount:35, rating:4, reviews:18430, description:"42hr total playtime, ENx tech for crystal calls, BEAST mode low latency, IPX4 water resistant, Bluetooth 5.1. India's #1 TWS bestseller.", image:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789d"), name:"JBL Flip 6 Portable Speaker", category:"Audio", price:9999, discount:15, rating:5, reviews:4230, description:"Powerful JBL Pro Sound, IP67 waterproof & dustproof, 12hr playtime, PartyBoost to link multiple speakers, USB-C charging, bold fabric design.", image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80", stock:true },
+  // ── SMART TVs ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789e"), name:'Samsung 55" Crystal 4K UHD', category:"Smart TVs", price:54990, discount:22, rating:4, reviews:3102, description:"Crystal 4K UHD Processor, PurColor, Motion Xcelerator, HDR, AirSlim design, Amazon Alexa built-in, Tizen OS, 3 HDMI + 2 USB.", image:"https://images.unsplash.com/photo-1593784991095-a205069470b6?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f6789f"), name:'LG OLED C3 65" 4K', category:"Smart TVs", price:169990, discount:18, rating:5, reviews:1890, description:"65 inch OLED Evo panel, Alpha9 AI Processor Gen6, Dolby Vision IQ + Atmos, 120Hz, 4x HDMI 2.1, NVIDIA G-Sync & AMD FreeSync Premium.", image:"https://images.unsplash.com/photo-1601944177325-f8867652837f?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a0"), name:'Mi 43" 4K Smart TV X Series', category:"Smart TVs", price:29999, discount:10, rating:4, reviews:7845, description:"43 inch 4K HDR10+ display, PatchWall 4, Dolby Vision & Atmos, 30W speaker, HDMI 2.1 eARC, Android TV 11, Google Assistant, Chromecast.", image:"https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=500&q=80", stock:true },
+  // ── APPLIANCES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a1"), name:"Voltas 1.5T 5★ Inverter AC", category:"Appliances", price:43990, discount:12, rating:4, reviews:2341, description:"1.5 Ton, 5 Star, Turbo Cool, Sleep Mode, Self-Clean, Anti-bacterial filter, Wi-Fi compatible, ISEER 4.72. Fits up to 150 sq.ft room.", image:"https://images.unsplash.com/photo-1566843972142-a7fcb70de55a?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a2"), name:"LG 7kg Front Load Washer", category:"Appliances", price:34990, discount:20, rating:4, reviews:1567, description:"7kg, 6 Motion Direct Drive, AI DD Technology, Steam, TurboWash, Allergy Care, 14 programmes, Wi-Fi ThinQ, 10yr motor warranty.", image:"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a3"), name:"Philips Air Fryer HD9200", category:"Appliances", price:6995, discount:30, rating:5, reviews:9873, description:"4.1L capacity, Rapid Air Technology, up to 90% less fat, 13 cooking functions, Quick Clean basket, 1400W. Make healthier food effortlessly.", image:"https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a4"), name:"Dyson V15 Detect Absolute", category:"Appliances", price:64900, discount:8, rating:5, reviews:2087, description:"Laser reveals hidden dust, HEPA filtration, 60 min run time, LCD real-time particle count, piezo sensor auto-adjusts suction. 3 heads included.", image:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80", stock:false },
+  // ── BEAUTY ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a5"), name:"Lakme Absolute Matte Lip Kit", category:"Beauty", price:799, discount:15, rating:4, reviews:3421, description:"5 full-size matte liquid lipsticks + liner + setting spray. 16hr long stay, hydrating matte finish, transfer-proof, 10 trending shades.", image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a6"), name:"Minimalist 10% Niacinamide Serum", category:"Beauty", price:599, discount:0, rating:5, reviews:12034, description:"10% Niacinamide + Zinc for pore minimising and oil balance. Lightweight water-based, no fragrance, no alcohol. Dermatologist tested. 30ml.", image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a7"), name:"Dyson Airwrap Multi-Styler", category:"Beauty", price:44900, discount:5, rating:5, reviews:3201, description:"Dries, waves, curls, smooths & hides frizz. Coanda airflow technology. No extreme heat damage. Includes long barrel + firm & soft smoothing brush.", image:"https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a8"), name:"Mamaearth Onion Hair Kit", category:"Beauty", price:649, discount:20, rating:4, reviews:21045, description:"Onion Shampoo 250ml + Conditioner 250ml + Hair Mask 200ml. Reduces hairfall, strengthens from root, toxin-free, dermatologically tested.", image:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=80", stock:true },
+  // ── WEARABLES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678a9"), name:"Apple Watch Series 9 GPS 45mm", category:"Wearables", price:41900, discount:6, rating:5, reviews:5432, description:"S9 chip, Double Tap gesture, Always-On Retina display, 18hr battery, Blood Oxygen + ECG, Crash Detection, WR50 waterproof. Carbon neutral.", image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678aa"), name:"Fitbit Charge 6", category:"Wearables", price:14999, discount:18, rating:4, reviews:2341, description:"Google Maps + Wallet on wrist, 7-day battery, built-in GPS, 40 exercise modes, ECG, Stress Management, Sleep Profile. Works iOS & Android.", image:"https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678ab"), name:"boAt Wave Call Smartwatch", category:"Wearables", price:1799, discount:40, rating:4, reviews:34521, description:"1.69\" HD display, Bluetooth calling, 100+ sports modes, SpO2 + heart rate, 7-day battery, IP68 waterproof, always-on display, stress monitoring.", image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678ac"), name:"Garmin Forerunner 265", category:"Wearables", price:42990, discount:10, rating:5, reviews:876, description:"AMOLED display, advanced running metrics, Training Readiness, HRV Status, 13-day battery, GPS, multisport tracking, body battery energy monitor.", image:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&q=80", stock:true },
+  // ── FASHION & APPAREL ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678ad"), name:"Levi's 511 Slim Fit Jeans", category:"Fashion & Apparel", price:3799, discount:20, rating:4, reviews:8432, description:"Classic slim fit denim with just the right amount of stretch. Mid-rise, tapered leg. 99% Cotton 1% Elastane. Machine washable. Blue and black.", image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678ae"), name:"Nike Air Max 270 Sneakers", category:"Fashion & Apparel", price:12995, discount:15, rating:5, reviews:5621, description:"Max Air heel unit for all-day comfort. Mesh upper for breathability, foam midsole for lightweight cushioning. Iconic 270-degree visible Air unit.", image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678af"), name:"Raymond Premium Formal Shirt", category:"Fashion & Apparel", price:1899, discount:25, rating:4, reviews:3102, description:"100% premium cotton formal shirt. Wrinkle resistant, easy-iron finish. 12 colours available. Regular fit with spread collar. Machine washable.", image:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b0"), name:"Zara Floral Midi Dress", category:"Fashion & Apparel", price:3490, discount:10, rating:4, reviews:2198, description:"Flowy midi-length floral print dress with V-neckline and puff sleeves. 100% viscose, lined. Perfect for casual and semi-formal occasions.", image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&q=80", stock:true },
+  // ── HOME & KITCHEN ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b1"), name:"Prestige Pressure Cooker 5L", category:"Home & Kitchen", price:1899, discount:22, rating:5, reviews:14302, description:"5 Litre aluminium pressure cooker with deep lid. Extra thick base for even heating, safety valve and gasket release system. ISI marked. 5yr warranty.", image:"https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b2"), name:"IKEA HEMNES Wooden Bookcase", category:"Home & Kitchen", price:14999, discount:0, rating:4, reviews:3871, description:"Solid pine wood bookcase with 8 compartments. Durable, timeless design. Fits A4 binders. Suitable for living room, bedroom or home office. 185x77cm.", image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b3"), name:"Borosil Vision Glass Set 6pc", category:"Home & Kitchen", price:599, discount:15, rating:5, reviews:22041, description:"Set of 6 borosilicate glass tumblers 375ml each. Microwave and dishwasher safe. Thermal shock resistant. Lead-free. Perfect for water, juice and beverages.", image:"https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b4"), name:"Saral Home Cotton Bedsheet King", category:"Home & Kitchen", price:1299, discount:30, rating:4, reviews:7654, description:"King size 100% pure cotton bedsheet with 2 pillow covers. 300 TC, anti-pilling, fade resistant. Available in 20 designs. Machine washable.", image:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80", stock:true },
+  // ── BOOKS & STATIONERY ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b5"), name:"Atomic Habits by James Clear", category:"Books & Stationery", price:499, discount:40, rating:5, reviews:31240, description:"The no.1 bestseller on building good habits. Over 10 million copies sold worldwide. Backed by neuroscience and proven strategies for lasting change.", image:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b6"), name:"STABILO Boss Highlighter Set 8pc", category:"Books & Stationery", price:349, discount:10, rating:4, reviews:9821, description:"Set of 8 pastel and neon highlighters. Smear-proof on inkjet prints, chisel tip for thick and thin lines, ink visible through tip. Long cap-off time.", image:"https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b7"), name:"Leuchtturm1917 Notebook A5 Dotted", category:"Books & Stationery", price:1099, discount:5, rating:5, reviews:4502, description:"A5 hardcover dotted notebook, 249 numbered pages, 2 bookmarks, elastic closure, ink-proof paper 80g. Ideal for journaling and bullet journaling.", image:"https://images.unsplash.com/photo-1517842645767-c639042777db?w=500&q=80", stock:true },
+  // ── SPORTS & FITNESS ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b8"), name:"Decathlon Domyos Yoga Mat 6mm", category:"Sports & Fitness", price:999, discount:20, rating:4, reviews:12430, description:"6mm thick non-slip yoga mat, natural rubber base, carrying strap included. 183x61cm. Ideal for yoga, pilates, and floor exercises. Easy to clean.", image:"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678b9"), name:"Boldfit 20kg Adjustable Dumbbell Set", category:"Sports & Fitness", price:4999, discount:25, rating:4, reviews:5632, description:"Adjustable 20kg dumbbell set (2x10kg). Quick-lock weight plates, anti-slip handle, compact design. Replaces 15 sets of dumbbells. Home gym essential.", image:"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678ba"), name:"Cosco Cyclone Basketball Size 7", category:"Sports & Fitness", price:799, discount:0, rating:4, reviews:3201, description:"Official size 7 rubber basketball. Butyl rubber bladder for superior air retention, deep channel design for better grip. Indoor and outdoor use.", image:"https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&q=80", stock:true },
+  // ── TOYS & GAMES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678bb"), name:"LEGO Technic Lamborghini 42115", category:"Toys & Games", price:34999, discount:8, rating:5, reviews:2891, description:"3696-piece LEGO Technic set. Authentic Lamborghini V12 engine, moving pistons, openable doors. Detailed interior. For ages 18 plus. Display model.", image:"https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678bc"), name:"Funskool Scrabble Classic Board Game", category:"Toys & Games", price:649, discount:12, rating:4, reviews:6741, description:"Classic Scrabble for 2-4 players. 100 premium letter tiles, rotating board, 4 tile racks, letter bag and score pad included. For ages 10 and above.", image:"https://images.unsplash.com/photo-1606503153255-59d8b8b82176?w=500&q=80", stock:true },
+  // ── AUTOMOTIVE ACCESSORIES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678bd"), name:"Portronics 36W 4-Port Car Charger", category:"Automotive Accessories", price:799, discount:30, rating:4, reviews:8921, description:"4-port USB car charger with 2x QC 3.0 plus 2x USB-A, 36W total output. LED indicator, universal compatibility, overcharge protection. 12V and 24V.", image:"https://images.unsplash.com/photo-1609429019995-8c40f49535a5?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678be"), name:"CarSpa Dash Camera 4K UHD", category:"Automotive Accessories", price:5499, discount:20, rating:4, reviews:3421, description:"4K UHD dash cam, 170-degree wide angle, Sony STARVIS night vision, GPS, Wi-Fi, loop recording, G-sensor, parking mode, 2.5-inch IPS display.", image:"https://images.unsplash.com/photo-1617788138017-80ad40651399?w=500&q=80", stock:true },
+  // ── HEALTH & WELLNESS ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678bf"), name:"Omron HEM-7124 BP Monitor", category:"Health & Wellness", price:2199, discount:18, rating:5, reviews:14302, description:"Fully automatic digital blood pressure monitor, clinically validated, 60-reading memory, irregular heartbeat detector, IntelliSense technology.", image:"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678c0"), name:"Neuherbs Raw Whey Protein 1kg", category:"Health & Wellness", price:1299, discount:22, rating:4, reviews:9034, description:"25g protein per serving, 5.5g BCAA, undenatured whey from grass-fed cows. No artificial sweeteners, low sugar, 33 servings. Chocolate and vanilla.", image:"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80", stock:true },
+  // ── PET SUPPLIES ──
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678c1"), name:"Royal Canin Adult Dog Food 3kg", category:"Pet Supplies", price:1799, discount:10, rating:5, reviews:7234, description:"Complete dry dog food for adult dogs 1-7 years. Balanced proteins, fibres and prebiotics for digestive health. Optimal kibble shape for easy chewing.", image:"https://images.unsplash.com/photo-1583512603806-077998240c7a?w=500&q=80", stock:true },
+  { _id: new mongoose.Types.ObjectId("64f1a3c0a1b2c3d4e5f678c2"), name:"Catlink Smart Self-Cleaning Litter Box", category:"Pet Supplies", price:12999, discount:15, rating:4, reviews:1876, description:"Self-cleaning automatic cat litter box, app-controlled, odour removal UV lamp, health monitor, safe for cats 2.5kg plus. Handles up to 3 cats. Quiet.", image:"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&q=80", stock:true },
 ];
 
 async function seedDB() {

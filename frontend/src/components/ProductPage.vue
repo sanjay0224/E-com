@@ -279,7 +279,15 @@ export default {
 .page-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: start; }
 
 /* Sidebar */
-.filter-sidebar { padding: 24px; position: sticky; top: 84px; }
+.filter-sidebar { 
+  padding: 24px; 
+  position: sticky; 
+  top: 84px; 
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Hide for Firefox */
+}
+.filter-sidebar::-webkit-scrollbar { display: none; /* Hide for Chrome/Safari */ }
 .filter-heading { color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
 .filter-group { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .filter-label { color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }

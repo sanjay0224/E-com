@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="ai-chat">
     <!-- Floating Button -->
     <button class="chat-fab" @click="isOpen = !isOpen" :class="{open: isOpen}" title="AI Shopping Assistant">
@@ -84,6 +84,8 @@ const BOT_RESPONSES = {
   ],
 };
 
+import { STATIC_PRODUCTS } from "../data/products";
+
 function getTime() {
   return new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 }
@@ -96,11 +98,23 @@ export default {
       input: "",
       typing: false,
       unread: 1,
+      products: STATIC_PRODUCTS, // Use static as initial state/fallback
       messages: [
         { from: "bot", text: "👋 Hi! I'm your <b>ShopVibe AI Assistant</b>. I can help you find products, check offers, and answer any shopping questions!", time: getTime() },
       ],
       quickReplies: ["Best deals?", "Laptop under ₹50K", "Return policy", "Payment options"],
     };
+  },
+  async mounted() {
+    try {
+      const resp = await fetch('http://localhost:5000/api/products');
+      if (resp.ok) {
+        const data = await resp.json();
+        if (data && data.length) this.products = data;
+      }
+    } catch (e) {
+      console.warn("AI Chat: Could not fetch products, using offline mode.");
+    }
   },
   watch: {
     isOpen(val) { if (val) { this.unread = 0; this.$nextTick(() => this.scrollToBottom()); } },
@@ -121,9 +135,80 @@ export default {
     },
     generateResponse(msg) {
       const lower = msg.toLowerCase();
+      
+      // 1. Check for specific keywords first (like returns, delivery)
+      for (const [key, resp] of Object.entries(BOT_RESPONSES.keywords)) {
+        if (lower.includes(key) && !['laptop','phone','headphone','tv','ac','beauty','cheap'].includes(key)) {
+          return resp;
+        }
+      }
+
+      // 2. Budget & Product Logic
+      const products = this.products;
+      const budgetMatch = lower.match(/under\s?₹?\s?(\d+)/) || 
+                          lower.match(/below\s?₹?\s?(\d+)/) ||
+                          lower.match(/(\d+)\s?under/) ||
+                          lower.match(/^(\d+)$/); // Also catch just a number
+      const budget = budgetMatch ? parseInt(budgetMatch[1].replace(/,/g, '')) : null;
+
+      // Filter by category if mentioned
+      let filtered = products;
+      if (lower.includes('laptop')) filtered = filtered.filter(p => p.category.toLowerCase().includes('laptop'));
+      else if (lower.includes('phone') || lower.includes('mobile')) filtered = filtered.filter(p => p.category.toLowerCase().includes('phone') || p.category.toLowerCase().includes('smartphone'));
+      else if (lower.includes('tv')) filtered = filtered.filter(p => p.category.toLowerCase().includes('tv'));
+      else if (lower.includes('audio') || lower.includes('headphone')) filtered = filtered.filter(p => p.category.toLowerCase().includes('audio'));
+      else if (lower.includes('appliance') || lower.includes('ac')) filtered = filtered.filter(p => p.category.toLowerCase().includes('appliance'));
+
+      // Filter by budget
+      if (budget) {
+        filtered = filtered.filter(p => {
+          const rawPrice = Number(p.price);
+          const rawDiscount = Number(p.discount || 0);
+          const finalPrice = rawDiscount ? Math.round(rawPrice - (rawPrice * rawDiscount) / 100) : rawPrice;
+          return finalPrice <= budget;
+        });
+      }
+
+      // 3. Response Selection
+      if (budget && filtered.length === 0) {
+        if (!products || products.length === 0) {
+          return "🤖 I'm still syncing the catalog. Try again in a moment!";
+        }
+        return `😔 I couldn't find any products under <b>₹${budget.toLocaleString()}</b> right now. Try searching for "laptops" or "phones" to see our top picks!`;
+      }
+
+      // Case 2: Products exist but check stock
+      let available = filtered.filter(p => p.stock !== false);
+      let outOfStock = filtered.filter(p => p.stock === false);
+
+      if (available.length === 0 && outOfStock.length > 0) {
+        let suggestions = products.filter(p => p.stock !== false).slice(0, 3);
+        return `
+          ⚠️ The items you're looking for are currently out of stock.
+          <br><br>💡 <b>Suggestions for you:</b>
+          <br>${suggestions.map(p => `• <b>${p.name}</b> – ₹${(p.discount ? Math.round(p.price - (p.price * p.discount) / 100) : p.price).toLocaleString()}`).join("<br>")}
+        `;
+      }
+
+      // Case 3: Show available products
+      if (available.length > 0) {
+        // Limit to top 4 results
+        const items = available.slice(0, 4);
+        return `
+          🛍️ I found some great options for you:
+          <br><br>${items.map(p => {
+            const finalPrice = p.discount ? Math.round(p.price - (p.price * p.discount) / 100) : p.price;
+            return `• <b>${p.name}</b> – ₹${finalPrice.toLocaleString()} ${p.discount ? `<span style="color:#10b981;font-size:11px">(${p.discount}% OFF)</span>` : ''}`;
+          }).join("<br>")}
+          <br><br>Want to see more? Check the <router-link to="/products" style="color:#fb923c">Products</router-link> page!
+        `;
+      }
+
+      // Fallback to keyword matching
       for (const [key, resp] of Object.entries(BOT_RESPONSES.keywords)) {
         if (lower.includes(key)) return resp;
       }
+
       return BOT_RESPONSES.default[Math.floor(Math.random() * BOT_RESPONSES.default.length)];
     },
     scrollToBottom() {

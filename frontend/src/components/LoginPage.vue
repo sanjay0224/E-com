@@ -29,7 +29,7 @@
                 <i class="bi bi-box-seam fs-1 text-primary"></i>
               </div>
               <h3 class="fw-bold brand-font text-white">Sign In</h3>
-              <p class="text-muted small">Access your E-Shop account</p>
+              <p class=" fw-bold ">Access your E-Shop account</p>
             </div>
 
             <!-- Alerts -->
@@ -54,7 +54,7 @@
               <div class="mb-4 position-relative">
                 <div class="d-flex justify-content-between align-items-center">
                   <label class="form-label text-muted small fw-semibold text-uppercase letter-spacing-1">Password</label>
-                  <a href="#" class="text-primary small text-decoration-none mb-2">Forgot?</a>
+                  <a href="#" class="text-primary small fw-bold brand-font text-gradient mb-2">Forgot?</a>
                 </div>
                 <div class="input-group-modern">
                   <i class="bi bi-lock input-icon"></i>
@@ -80,10 +80,7 @@
                 </div>
               </div>
 
-              <button
-                type="submit"
-                class="btn-modern w-100 py-3 d-flex justify-content-center align-items-center gap-2 mb-4"
-              >
+              <button type="submit" class="btn-modern w-100 py-3 d-flex justify-content-center align-items-center gap-2 mb-4 text-dark">
                 Sign In <i class="bi bi-arrow-right"></i>
               </button>
 
@@ -93,18 +90,18 @@
 
               <!-- Social login -->
               <div class="d-flex gap-3 mt-3 mb-4">
-                <button type="button" class="btn-outline-modern flex-grow-1 py-2 text-white">
+                <button type="button" class="btn-outline-modern flex-grow-1 py-2 text-dark">
                   <i class="bi bi-google text-danger me-2"></i> Google
                 </button>
-                <button type="button" class="btn-outline-modern flex-grow-1 py-2 text-white">
+                <button type="button" class="btn-outline-modern flex-grow-1 py-2 text-dark">
                   <i class="bi bi-facebook text-primary me-2"></i> Facebook
                 </button>
-              </div>
+</div>
 
               <div class="text-center mt-4 pt-2">
                 <p class="text-muted small mb-0">
                   Don't have an account? 
-                  <router-link to="/signup" class="text-primary fw-semibold text-decoration-none ms-1">Sign up now</router-link>
+                  <router-link to="/signup" class="text-primary fw-bold brand-font text-gradient ms-1">Sign up now</router-link>
                 </p>
               </div>
             </form>
@@ -163,7 +160,7 @@ export default {
 <style scoped>
 /* Layout */
 .login-container {
-  background: radial-gradient(circle at bottom right, #0f172a, #020617);
+  background: radial-gradient(circle at bottom right, #1a1c20, #020617);
   overflow-x: hidden;
 }
 
@@ -183,7 +180,7 @@ export default {
 .top-glow {
   top: -200px;
   left: -100px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, rgba(0,0,0,0) 70%);
 }
 .bottom-glow {
   bottom: -200px;
@@ -192,14 +189,14 @@ export default {
 }
 
 .border-primary-glow {
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  background: rgba(26, 28, 32, 0.4);
 }
 
 .logo-circle {
   width: 70px;
   height: 70px;
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(34, 37, 43, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -222,7 +219,7 @@ export default {
 }
 
 .modern-input {
-  background: rgba(15, 23, 42, 0.6) !important;
+  background: rgba(26, 28, 32, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: white !important;
   padding-left: 45px !important;
@@ -233,8 +230,8 @@ export default {
 
 .modern-input:focus {
   border-color: var(--primary) !important;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
-  background: rgba(15, 23, 42, 0.8) !important;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15) !important;
+  background: rgba(26, 28, 32, 0.8) !important;
 }
 
 .password-toggle {
@@ -279,7 +276,7 @@ export default {
 }
 
 .bg-glass {
-  background: #151e32;
+  background: #1a1c20;
 }
 
 .animate-fade {

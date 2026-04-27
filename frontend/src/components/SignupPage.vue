@@ -61,7 +61,7 @@
                   <div class="strength-bar" :class="passwordStrengthClass"></div>
                 </div>
                 <small class="text-muted d-block mt-2" style="font-size: 0.75rem;">
-                  <i class="bi bi-info-circle me-1"></i> Use 8+ chars with upper, number & symbol
+                  <i class="bi bi-info-circle fw-bold brand-font text-gradient me-1"></i> Use 8+ chars with upper, number & symbol
                 </small>
               </div>
 
@@ -78,7 +78,7 @@
             <!-- Login Redirect -->
             <div class="text-center mt-3">
               <p class="text-muted small mb-0">Already have an account?
-                <router-link to="/login" class="text-primary fw-semibold text-decoration-none ms-1">Sign in here</router-link>
+                <router-link to="/login" class="text-primary fw-bold brand-font text-gradient ms-1">Sign in here</router-link>
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default {
 <style scoped>
 /* Layout */
 .signup-container {
-  background: radial-gradient(circle at bottom right, #0f172a, #020617);
+  background: radial-gradient(circle at bottom right, #1a1c20, #020617);
   overflow-x: hidden;
 }
 
@@ -168,18 +168,18 @@ export default {
 .top-glow {
   top: -200px;
   right: -100px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(0,0,0,0) 70%);
 }
 .bottom-glow {
   bottom: -200px;
   left: -100px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, rgba(0,0,0,0) 70%);
 }
 
 .logo-circle {
   width: 70px;
   height: 70px;
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(34, 37, 43, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -202,7 +202,7 @@ export default {
 }
 
 .modern-input {
-  background: rgba(15, 23, 42, 0.6) !important;
+  background: rgba(26, 28, 32, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: white !important;
   padding-left: 45px !important;
@@ -213,8 +213,8 @@ export default {
 
 .modern-input:focus {
   border-color: var(--primary) !important;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
-  background: rgba(15, 23, 42, 0.8) !important;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15) !important;
+  background: rgba(26, 28, 32, 0.8) !important;
 }
 
 .password-toggle {
@@ -275,6 +275,6 @@ export default {
 }
 
 .bg-glass {
-  background: #151e32;
+  background: #1a1c20;
 }
 </style>
